@@ -42,7 +42,7 @@ def index():
 
 	user_email = users[reply_user]
 
-	_sendHtmlEmail(from_ad, user_email, 'RE:Lovely Maintenance Request', None, text)
+	_sendHtmlEmail(from_ad, user_email, 'RE:Lovely Maintenance Request', None, text, request.form['from'])
 	print 'email'
 
 	#create twitter
@@ -50,13 +50,13 @@ def index():
 		auth=OAuth(oauth_token, oauth_secret,
 			consumer_key, consumer_secret)
 	)
-	tweet = '%s Your landlord has responded to your request. Check your email.' % '@'+reply_user
+	tweet = '%s Your landlord has responded to your request. Check your email.' % ('@'+reply_user)
 	t.statuses.update(status=tweet, in_reply_to_status_id=in_reply_to)
 	print 'tweet'
 	#except Exception as ex:
 	#	raise ex
 	#finally:
-	#	return '1'
+	return '1'
 
 app.run(host='0.0.0.0', port=80)
 
