@@ -9,6 +9,8 @@ def index():
 	r = request.params
 	#pull user
 
+app.run(port=80)
+
 
 
 
