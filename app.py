@@ -33,18 +33,20 @@ def index():
 
 	#match tweet
 	tweet_match = re.search('([\w]*)\+([\d]*)@maintenance.livelovely.com', to)
-	reply_user = tweet_match.group(1)
-	print reply_user
-	in_reply_to = tweet_match.group(2)
-	print in_reply_to
+	if tweet_match is not None:
+		reply_user = tweet_match.group(1)
+		print reply_user
+		in_reply_to = tweet_match.group(2)
+		print in_reply_to
 
 	sms_match = re.search('([\d]*)@maintenance.livelovely.com', to)
-	from_sms = sms_match.group(1)
-	print from_sms
+	if sms_match is not None:
+		from_sms = sms_match.group(1)
+		print from_sms
 
 	twitter = False
 	sms = False
-	if reply_user is not None and in_reply_to is not None:
+	if tweet_match is not None:
 		user_email = users[reply_user]
 		twitter = True
 	else:
