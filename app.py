@@ -42,7 +42,7 @@ def index():
 
 	user_email = users[reply_user]
 
-	_sendHtmlEmail(from_ad, user_email, 'RE:Lovely Maintenance Request', text, None)
+	_sendHtmlEmail(from_ad, user_email, 'RE:Lovely Maintenance Request', None, text)
 	print 'email'
 
 	#create twitter
