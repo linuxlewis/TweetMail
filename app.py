@@ -8,6 +8,7 @@ def index():
 	print request
 	r = request.params
 	#pull user
+	return '1'
 
 app.run(host='0.0.0.0', port=80)
 
