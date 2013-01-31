@@ -6,7 +6,6 @@ app = Flask(__name__)
 def index():
 	print 'yayyyyy'
 	print request
-	r = request.params
 	#pull user
 	return '1'
 
