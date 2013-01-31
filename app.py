@@ -12,6 +12,14 @@ oauth_secret = 'ZxZ1ey5qyoUmpV5etMXfm3CktukaM2mVdCAkxIGgo'
 
 app = Flask(__name__)
 
+import logging
+from logging.handlers import SMTPHandler
+mail_handler = SMTPHandler('smtp.sendgrid.net',
+	'noreply@livelovely.com',
+	'sam@livelovely.com', 'TweetMail Ate Shit in %s', credentials=('doug@homeboodle.com', '88gg88'))
+mail_handler.setLevel(logging.ERROR)
+app.logger.addHandler(mail_handler)
+
 users = []
 
 @app.route('/', methods=['GET', 'POST'])
