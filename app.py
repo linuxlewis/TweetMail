@@ -25,6 +25,7 @@ users = []
 @app.route('/', methods=['GET', 'POST'])
 def index():
 	#try:
+	print request.form
 	to = request.form['to']
 	tweet_match = re.search('([\w]*)\+([\d]*)@maintenance.livelovely.com', to)
 	reply_user = tweet_match.group(1)
@@ -33,7 +34,9 @@ def index():
 	print in_reply_to
 
 	#forward email
+	print request.form['envelope']
 	from_ad = request.form['envelope']['from']
+
 	text = request.form['text']
 
 	user_email = users[reply_user]
