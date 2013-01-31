@@ -16,7 +16,7 @@ import logging
 from logging.handlers import SMTPHandler
 mail_handler = SMTPHandler('smtp.sendgrid.net',
 	'noreply@livelovely.com',
-	'sam@livelovely.com', 'TweetMail Ate Shit in %s', credentials=('doug@homeboodle.com', '88gg88'))
+	'sam@livelovely.com', 'TweetMail Ate Shit in', credentials=('doug@homeboodle.com', '88gg88'))
 mail_handler.setLevel(logging.ERROR)
 app.logger.addHandler(mail_handler)
 
@@ -25,7 +25,6 @@ users = {'SerenaKeith':'keith.serena@gmail.com'}
 @app.route('/', methods=['GET', 'POST'])
 def index():
 	#try:
-	print request.form
 	to = request.form['to']
 	tweet_match = re.search('([\w]*)\+([\d]*)@maintenance.livelovely.com', to)
 	reply_user = tweet_match.group(1)
@@ -34,11 +33,9 @@ def index():
 	print in_reply_to
 
 	#forward email
-	print request.form['envelope']
-	print type(request.form)
 	from_ad = request.form['envelope'][1]
 
-	text = request.form['text']
+	text = request.form['html']
 
 	user_email = users[reply_user]
 
@@ -50,9 +47,12 @@ def index():
 		auth=OAuth(oauth_token, oauth_secret,
 			consumer_key, consumer_secret)
 	)
-	tweet = '%s Your landlord has responded to your request. Check your email.' % ('@'+reply_user)
-	t.statuses.update(status=tweet, in_reply_to_status_id=in_reply_to)
-	print 'tweet'
+	try:
+		tweet = '%s Your landlord has responded to your request. Check your email.' % ('@'+reply_user)
+		t.statuses.update(status=tweet, in_reply_to_status_id=in_reply_to)
+		print 'tweet'
+	except Exception as ex:
+		pass
 	#except Exception as ex:
 	#	raise ex
 	#finally:
