@@ -80,7 +80,7 @@ def index():
 	return '1'
 
 types = ['washer', 'dryer', 'toilet', 'sink', 'dishwasher', 'broken']
-tenet_user = {'+19178550483':{'name':'Serena Keith'}}
+tenet_user = {'+19178550483':{'name':'Serena Keith'}, '+12622275823':{'name':'Sam Bolgert'} }
 user = {'email':'sam@livelovely.com', 'name':'Sam Bolgert', 'phone':'+12622275823'}
 @app.route('/sms', methods=['GET', 'POST'])
 def sms():
