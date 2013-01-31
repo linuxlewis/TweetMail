@@ -20,7 +20,7 @@ mail_handler = SMTPHandler('smtp.sendgrid.net',
 mail_handler.setLevel(logging.ERROR)
 app.logger.addHandler(mail_handler)
 
-users = []
+users = {'SerenaKeith':'keith.serena@gmail.com'}
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
