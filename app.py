@@ -84,6 +84,7 @@ tenet_user = {'+19178550483':{'name':'Serena Keith'}}
 user = {'email':'sam@livelovely.com', 'name':'Sam Bolgert', 'phone':'+12622275823'}
 @app.route('/sms', methods=['GET', 'POST'])
 def sms():
+	print request.form
 	#look for types
 	email = False
 	for type in types:
@@ -95,7 +96,6 @@ def sms():
 			break
 	if email is True:
 		send_email_to_user(user, '', request.form['from'], request.form['text'])
-
 	return '1'
 
 def send_email_to_user(user, type, from_number, text):
