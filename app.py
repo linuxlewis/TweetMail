@@ -36,7 +36,7 @@ def index():
 	#forward email
 	print request.form['envelope']
 	print type(request.form)
-	from_ad = request.form['envelope']['from']
+	from_ad = request.form['envelope'].get('from')
 
 	text = request.form['text']
 
