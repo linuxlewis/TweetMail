@@ -1,4 +1,0 @@
-TweetSlice
-==========
-
-hackathon idea
