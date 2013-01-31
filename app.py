@@ -96,6 +96,8 @@ def sms():
 			break
 	if email is True:
 		send_email_to_user(user, '', request.form['from'], request.form['text'])
+
+	print 'hey'
 	return '1'
 
 def send_email_to_user(user, type, from_number, text):
