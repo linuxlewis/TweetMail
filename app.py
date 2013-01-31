@@ -26,7 +26,9 @@ app.logger.addHandler(mail_handler)
 
 users = {'SerenaKeith':'keith.serena@gmail.com', 'linuxlewis':'sbolgert@gmail.com', '19178550483':'keith.serena@gmail.com', '12622275823':'sbolgert@gmail.com'}
 
-i = 0
+class poop:
+	i = 0
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
 	#try:
@@ -61,14 +63,14 @@ def index():
 	print 'email'
 
 	if twitter is True:
-		i += 1
+		poop.i += 1
 		#create twitter
 		t = Twitter(
 			auth=OAuth(oauth_token, oauth_secret,
 				consumer_key, consumer_secret)
 		)
 		try:
-			tweet = '%s Check your email for your landlord\'s response! Rate their repair by replying 1-5 (5=best) to this tweet. #%s' % ('@'+reply_user, str(i))
+			tweet = '%s Check your email for your landlord\'s response! Rate their repair by replying 1-5 (5=best) to this tweet. #%s' % ('@'+reply_user, str(poop.i))
 			t.statuses.update(status=tweet, in_reply_to_status_id=in_reply_to)
 			print 'tweet'
 		except Exception as ex:
