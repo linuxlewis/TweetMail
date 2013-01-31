@@ -61,6 +61,7 @@ def index():
 @app.route('/sms', methods=['GET', 'POST'])
 def sms():
 	print request.form
+	return '1'
 
 app.run(host='0.0.0.0', port=80)
 
