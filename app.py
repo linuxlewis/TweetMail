@@ -20,7 +20,7 @@ mail_handler = SMTPHandler('smtp.sendgrid.net',
 mail_handler.setLevel(logging.ERROR)
 app.logger.addHandler(mail_handler)
 
-users = {'SerenaKeith':'keith.serena@gmail.com'}
+users = {'SerenaKeith':'keith.serena@gmail.com', 'linuxlewis':'sbolgert@gmail.com'}
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -48,7 +48,7 @@ def index():
 			consumer_key, consumer_secret)
 	)
 	try:
-		tweet = '%s Your landlord has responded to your request. Check your email.' % ('@'+reply_user)
+		tweet = '%s Check your email for your landlord\'s response! Rate their repair by replying 1-5 (5=best) to this tweet.' % ('@'+reply_user)
 		t.statuses.update(status=tweet, in_reply_to_status_id=in_reply_to)
 		print 'tweet'
 	except Exception as ex:
