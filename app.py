@@ -9,7 +9,7 @@ def index():
 	r = request.params
 	#pull user
 
-app.run(port=80)
+app.run(host='0.0.0.0', port=80)
 
 
 
