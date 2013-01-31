@@ -88,16 +88,14 @@ def sms():
 	#look for types
 	email = False
 	for type in types:
-		match = re.search(type, request.form['text'])
+		match = re.search(type, request.form['Body'])
 		if match is not None:
 			print 'Type Email Sent'
-			send_email_to_user(user, type, request.form['from'], request.form['text'])
+			send_email_to_user(user, type, request.form['From'], request.form['Body'])
 			email = True
 			break
 	if email is True:
-		send_email_to_user(user, '', request.form['from'], request.form['text'])
-
-	print 'hey'
+		send_email_to_user(user, '', request.form['From'], request.form['Body'])
 	return '1'
 
 def send_email_to_user(user, type, from_number, text):
