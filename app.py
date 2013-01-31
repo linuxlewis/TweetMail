@@ -1,28 +1,14 @@
-import time
+from flask import Flask, request
 
-twitter_keys = []
-app_key = 'blah'
-sendgrid_key = 'ok'
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+	print 'yayyyyy'
+	print request
+	r = request.params
+	#pull user
 
 
 
-def run():
-	print 'Starting TweetSlice'
 
-	#start threads
-
-	while True:
-
-		for key in twitter_keys:
-			#check maintaince tweets
-			pass
-		time.sleep(60)
-
-def check_tweet_for_maintaince(tweet):
-	pass
-
-def send_email_to_user(user, type, tweet):
-	pass
-
-if __name__ == '__main__':
-	run()
