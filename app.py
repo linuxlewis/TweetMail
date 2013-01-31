@@ -20,7 +20,9 @@ def index():
 		to = request.form['to']
 		tweet_match = re.search('([\w]*)\+([\d]*)@maintenance.livelovely.com', to)
 		reply_user = tweet_match.group(1)
+		print reply_user
 		in_reply_to = tweet_match.group(2)
+		print in_reply_to
 
 		#forward email
 		from_ad = request.form['envelope']['from']
@@ -38,7 +40,7 @@ def index():
 		tweet = '%s Your landlord has responded to your request. Check your email.' % '@'+reply_user
 		t.statuses.update(status=tweet, in_reply_to_status_id=in_reply_to)
 	except Exception as ex:
-		print ex.message
+		raise ex
 	finally:
 		return '1'
 
